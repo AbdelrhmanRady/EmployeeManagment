@@ -1,0 +1,13 @@
+﻿@model HomeShowViewModel
+
+@{
+    var photoPath = "~/Images/" + (Model.employee.PhotoPath ?? "lake.jpg");
+}
+
+        <h1>ViewBag.pageTitle</h1>
+        <img src="@photoPath" asp-append-version="true"/>
+        <p>My name is @Model.employee.Name yo</p>
+        <p>@Model.employee.Department</p>
+        <p>@Model.employee.Email</p>
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.employee.Id">Edit</a>
+

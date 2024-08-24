@@ -1,0 +1,35 @@
+﻿@model EmployeeCreateViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form enctype="multipart/form-data" method="post">
+    <div asp-validation-summary="All" class="text-danger"> </div>
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger d-block"></span>
+    </div>
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email" class="text-danger d-block"></span>
+    </div>
+    <div>
+        <label asp-for="Department"></label>
+        <select asp-for="Department" asp-items="Html.GetEnumSelectList<Dept>()">   
+            <option value="">Please Select</option>
+        </select>
+        <span asp-validation-for="Department" class="text-danger d-block"></span>
+    </div>
+    <div>
+        <label asp-for="Photo"></label>
+        <input  asp-for="Photo" />
+
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+ 
+
+</form>
+

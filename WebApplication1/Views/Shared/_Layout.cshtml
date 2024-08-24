@@ -1,0 +1,50 @@
+﻿
+<!DOCTYPE html>
+@inject SignInManager<ApplicationUser> signInManager;
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+    <div class="bg-dark text-white d-flex justify-content-between">
+        <div >
+            <a asp-action="index" asp-controller="Home" class="mx-2">List</a>
+            <a asp-action="Create" asp-controller="Home" class="mx-3">Create Employee</a>
+            @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin rady"))
+            {
+                <a asp-action="ListRoles" asp-controller="Administration" class="mx-3">Manage Roles</a>
+                <a asp-action="ListUsers" asp-controller="Administration" class="mx-3">Manage Users</a>
+            }
+        </div>
+    @if (signInManager.IsSignedIn(User))
+    {
+        <form method="post" asp-action="logout" asp-controller="account">
+            <button type="submit">
+                Log out @User.Identity.Name
+            </button>
+        </form>
+        <a asp-controller="Account" asp-action="ChangePassword" >Change Password</a>
+    }
+    else
+    {
+        <div>
+            <a asp-action="register" asp-controller="account" class="mx-2">Register</a>
+            <a asp-action="login" asp-controller="account" class="mx-3">Login</a>
+            </div>
+        
+    }
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+    @RenderSection("Scripts",required:false);
+</body>
+</html>

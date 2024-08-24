@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Employee>
+
+@{
+    ViewBag.title = "It's everyday bro";
+}
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Email</th>
+            </tr>
+        @foreach(var employee in Model)
+            {
+                <tr>
+                    <td>@employee.Name</td>
+                    <td>@employee.Department</td>
+                    <td>@employee.Email</td>
+             <td><a asp-action="cunt" asp-route-id="@employee.EncryptedId" class="btn btn-primary"> View User </a></td>
+                    
+
+                </tr>
+
+            }
+    
+        </table>
+
+
+        
+@*        @section Scripts{
+    <script src="~/js/javascript.js"></script>
+        }
+       *@

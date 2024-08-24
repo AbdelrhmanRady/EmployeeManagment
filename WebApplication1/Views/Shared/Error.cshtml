@@ -1,0 +1,16 @@
+﻿<h1>It's an error my bro</h1>
+
+@*<h1>@ViewBag.ExceptionPath</h1>
+<h1>@ViewBag.ExceptionMsg</h1>*@
+
+@if(ViewBag.ErrorTitle == null)
+{
+    <h1> An error has occured, the developers have been notified and are working on a fix</h1>
+    <h3> Please contact us if the error presists</h3>
+}
+else
+{
+    <h1>@ViewBag.ErrorTitle</h1>
+    <h3>@ViewBag.ErrorMsg</h3>
+}
+
